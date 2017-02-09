@@ -18,7 +18,7 @@ var Stack = function() {
     popcounter++;
     size--;
     var value = storage[size]; 
-    delete storage[size]; 
+    delete storage[size];
     return value; 
   };
 
