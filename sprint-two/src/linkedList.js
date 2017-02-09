@@ -2,19 +2,16 @@ var LinkedList = function() {
   var list = {};
   list.head = null; //
   list.tail = null;
-  // _.extend(list, NodeFunction); //is NodeFunction getting extended 
   
 
   list.addToTail = function(value) {
-    var tailNode = NodeFunction(value);
-    if (!list.head && !list.tail) {
-
-      list.head = tailNode;
-      list.tail = tailNode;
-
-    } else {
-      list.tail.next = tailNode; 
-      list.tail = tailNode;
+    var tailNode = NodeFunction(value); // Store the added node value in tailNode
+    if (!list.head && !list.tail) { // Check if both head and tail exists in list
+      list.head = tailNode; // If they don't exist, set head to passed in node value
+      list.tail = tailNode; // Also set tail to passed in node value ie. head and tail are the same
+    } else {  // If head or tail exist
+      list.tail.next = tailNode; // Set the next tail to be new node value
+      list.tail = tailNode; // Set the tail to new node value
     }
   };
 
@@ -25,12 +22,13 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-    
-    var search = function(node) {
-      if (node === target) {
+    for (var node = list.head; node !== null; node = node.next) {
+      if (node.value === target) {
         return true;
-      }
-    };
+      } 
+      // Not sure why putting return false here wouldn't work
+    }
+    return false;
   };
 
   return list;
