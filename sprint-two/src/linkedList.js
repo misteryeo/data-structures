@@ -16,15 +16,15 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() { 
-    var delHead = list.head;
-    list.head = list.head.next;
-    return delHead.value;
+    var delHead = list.head; // Store the head in delHead
+    list.head = list.head.next; // Set the head to the next head
+    return delHead.value; // Return the value of the deleted head ??
   };
 
   list.contains = function(target) {
-    for (var node = list.head; node !== null; node = node.next) {
-      if (node.value === target) {
-        return true;
+    for (var node = list.head; node !== null; node = node.next) { // Iterate through the list starting at the head
+      if (node.value === target) { // Check if the value of node matches target
+        return true; // If so, return true
       } 
       // Not sure why putting return false here wouldn't work
     }
