@@ -22,7 +22,7 @@ stackMethods.pop = function () {
   if (this.count > 0) {
     this.count--;
   }
-  // delete this.storage[this.count]; // Why does this break the test?
+
   return value;
 };
 
