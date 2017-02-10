@@ -32,6 +32,15 @@ Graph.prototype.removeNode = function(node) {
     if (this.storage[i] === node) {
       // Remove node with splice method
       removeNode = this.storage.splice(i, 1); 
+      
+      //iterate through edge array   
+      for (var j = 0; j < this.edge.length; j++) {
+        //checking if edge array has a edge that is connected to the node
+        if (this.edge[j][0] === node || this.edge[j][1] === node) {
+        //remove the node with splice 
+          this.edge.splice(j, 1);
+        }
+      }
     }
   }
   return removedNode;
@@ -65,7 +74,8 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
     // Check if the nested array indices match the arguments passed in
     if ((this.edge[i][0] === fromNode && this.edge[i][1] === toNode) ||
       (this.edge[i][1] === fromNode && this.edge[i][0] === toNode)) {
-      removedEdge = this.edge.splice(i); 
+      removedEdge = this.edge.splice(i, 1);
+
     }
   }
   return removedEdge;
