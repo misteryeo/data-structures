@@ -6,6 +6,7 @@ var Graph = function() {
   this.storage = [];
 // Establish a value for the node
   this.value = null; // Check why we need to use .value?
+  this.edge = [];
 };
 
 // Add a node to the graph, passing in the node's value.
@@ -38,10 +39,23 @@ Graph.prototype.removeNode = function(node) {
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+  // Iterate through the edge array for each nested array
+  for (var i = 0; i < this.edge.length; i++) {
+    // Check if the nested array indices match the arguments passed in
+    if ((this.edge[i][0] === fromNode && this.edge[i][1] === toNode) ||
+      (this.edge[i][1] === fromNode && this.edge[i][0] === toNode)) {
+      return true; 
+    // If so, return true
+    }
+  }
+  // Return false
+  return false;
 };
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
+  // 
+  this.edge.push([fromNode, toNode]);
 };
 
 // Remove an edge between any two specified (by value) nodes.
