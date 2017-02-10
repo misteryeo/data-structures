@@ -15,21 +15,29 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  
-  // Iterate through tree object
-  if (this.value === target) {
-    return true;
-  }
-  // Iterate through children array
-  for (var i = 0; i < this.children.length; i++) {
-  // Check if target equals value in children
-    if (this.children[i] === target) {
-  // If true, return true
-      return true;
+// Set a variable for true or false
+  var check = false;
+
+  // Establish a function to search tree
+  var searchTree = function(tree) {
+  // Check if value in tree matches target
+    if (tree.value === target) {
+      check = true;
     }
-  }
-  // Return false for all other cases
-  return false;
+
+  // Check if children array exists
+    if (tree.children) {
+  // Iterate through children array
+      for (var i = 0; i < tree.children.length; i++) {
+  // Recursively apply searchTree for each child
+        searchTree(tree.children[i]);
+      }
+    }
+  };
+  // Apply recursion to newTree
+  searchTree(this);
+  // Return check for all other cases
+  return check;
 
 };
 
