@@ -83,6 +83,11 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
+  // iterate through storage of nodes
+  for (var i = 0; i < this.storage.length; i++) {
+    //adds edge to each of the nodes     
+    cb(this.storage[i]);
+  }
 };
 
 /*
