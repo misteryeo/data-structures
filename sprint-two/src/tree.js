@@ -15,13 +15,10 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
+  
   // Iterate through tree object
-  for (var key in this.newTree) {
-  // Check if target equals value in tree
-    if (newTree[key] === target) {
-  // If true, return true
-      return true;
-    }
+  if (this.value === target) {
+    return true;
   }
   // Iterate through children array
   for (var i = 0; i < this.children.length; i++) {
@@ -33,6 +30,7 @@ treeMethods.contains = function(target) {
   }
   // Return false for all other cases
   return false;
+
 };
 
 
