@@ -5,13 +5,13 @@ var Graph = function() {
 // Establish an empty array to store new nodes
   this.storage = [];
 // Establish a value for the node
-  this.value = null; // Check why we need to use .value?
+  this.value = null;
   this.edge = [];
 };
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
-  var newNode = new Graph();  //need to check what newGraph() pushes
+  var newNode = new Graph();  //NEED TO FIX THIS. new Graph() is invoked. object is created
   newNode.value = node;
 // Push new nodes into storage
   this.storage.push(newNode.value);
