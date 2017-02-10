@@ -11,12 +11,28 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  var tree = Tree(value);
-  this.children.push(tree);
+  this.children.push(Tree(value)); // Push new value into children array
 };
 
 treeMethods.contains = function(target) {
-
+  // Iterate through tree object
+  for (var key in this.newTree) {
+  // Check if target equals value in tree
+    if (newTree[key] === target) {
+  // If true, return true
+      return true;
+    }
+  }
+  // Iterate through children array
+  for (var i = 0; i < this.children.length; i++) {
+  // Check if target equals value in children
+    if (this.children[i] === target) {
+  // If true, return true
+      return true;
+    }
+  }
+  // Return false for all other cases
+  return false;
 };
 
 
