@@ -5,8 +5,19 @@ var HashTable = function() {
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit); // gives back index for where it will go
+  
   var tuple = [k, v];
-  this._storage.set(index, tuple);
+  if (this._storage[index] === undefined) {
+    var bucket = [];
+  }
+  bucket.push(tuple);
+
+  // set method pushes in BUCKET at index
+  this._storage.set(index, bucket);
+
+  // loop thru bucket, Check if tuple at index exists
+  // If so overwrite if k is the same 
+  // else push in new tuple in bucket array
 };
 
 HashTable.prototype.retrieve = function(k) {
@@ -15,8 +26,8 @@ HashTable.prototype.retrieve = function(k) {
   var bucket = this._storage.get(index);
 
   for (var i = 0; i < bucket.length; i++) {
-    if (bucket[i] === k) {
-      return bucket[i + 1];
+    if (bucket[i][0] === k) {
+      return bucket[i][1];
     }
   }
 };
@@ -26,11 +37,10 @@ HashTable.prototype.remove = function(k) {
 
   var bucket = this._storage.get(index);
   for (var i = 0; i < bucket.length; i++) {
-    if (bucket[i] === k) {
+    if (bucket[i][0] === k) {
       bucket.splice(i, 1);
     }
   }
-
 };
 
 
